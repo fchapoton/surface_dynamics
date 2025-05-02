@@ -1,241 +1,471 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Strata of Abelian and quadratic differentials" href="../strata.html" /><link rel="prev" title="Square-tiled surfaces" href="square_tiled_surfaces.html" />
 
-    <!-- Generated with Sphinx 5.3.0 and Furo 2023.05.20 -->
-        <title>Filtering Possible \(\mathcal M\)-Parallel Classes - surface-dynamics 0.4.7 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=e6660623a769aa55fea372102b9bf3151b292993" />
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Filtering Possible \(\mathcal M\)-Parallel Classes &#8212; surface-dynamics 0.7.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
-    <link rel="stylesheet" type="text/css" href="https://doc.sagemath.org/html/en/reference/_static/custom-furo.css" />
-    
-    
-
-
-<style>
-  body {
-    --color-code-background: #eeffcc;
-  --color-code-foreground: black;
-  --color-brand-primary: #0f0fff;
-  --color-brand-content: #0f0fff;
+    <link rel="stylesheet" type="text/css" href="../_static/extra.css?v=0eb12c1b" />
   
-  }
-  @media not print {
-    body[data-theme="dark"] {
-      --color-code-background: #272822;
-  --color-code-foreground: #f8f8f2;
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=c62cc9a0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/rank2_genus3_classification';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The databases.flat_surfaces Module" href="../databases/flat_surfaces.html" />
+    <link rel="prev" title="Square-tiled Surfaces" href="square_tiled_surfaces.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
   
-    }
-    @media (prefers-color-scheme: dark) {
-      body:not([data-theme="light"]) {
-        --color-code-background: #272822;
-  --color-code-foreground: #f8f8f2;
   
-      }
-    }
-  }
-</style></head>
-  <body>
-    
-    <script>
-      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
-    </script>
-    
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-  <symbol id="svg-toc" viewBox="0 0 24 24">
-    <title>Contents</title>
-    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
-      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
-    </svg>
-  </symbol>
-  <symbol id="svg-menu" viewBox="0 0 24 24">
-    <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="6" x2="21" y2="6"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
-    <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  </symbol>
-  <symbol id="svg-sun" viewBox="0 0 24 24">
-    <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-  </symbol>
-  <symbol id="svg-moon" viewBox="0 0 24 24">
-    <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-    </svg>
-  </symbol>
-  <symbol id="svg-sun-half" viewBox="0 0 24 24">
-    <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M13 12h5" />
-      <path d="M13 15h4" />
-      <path d="M13 18h1" />
-      <path d="M13 9h4" />
-      <path d="M13 6h1" />
-    </svg>
-  </symbol>
-</svg>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
 
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
 
-<div class="page">
-  <header class="mobile-header">
-    <div class="header-left">
-      <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
-      </label>
-    </div>
-    <div class="header-center">
-      <a href="../index.html"><div class="brand">surface-dynamics 0.4.7 documentation</div></a>
-    </div>
-    <div class="header-right">
-      <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-        </button>
-      </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-      </label>
-    </div>
-  </header>
-  <aside class="sidebar-drawer">
-    <div class="sidebar-container">
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
   
-  <div class="sidebar-logo-container">
-    <img class="sidebar-logo only-light" src="../_static/logo.svg" alt="Light Logo"/>
-    <img class="sidebar-logo only-dark" src="../_static/logo.svg" alt="Dark Logo"/>
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
   </div>
   
-  <span class="sidebar-brand-text">surface-dynamics 0.4.7 documentation</span>
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
   
-</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
-  <input type="hidden" name="check_keywords" value="yes">
-  <input type="hidden" name="area" value="default">
-</form>
-<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="interval_exchanges.html">Interval exchange transformations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="square_tiled_surfaces.html">Square-tiled surfaces</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Filtering Possible <span class="math notranslate nohighlight">\(\mathcal M\)</span>-Parallel Classes</a></li>
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://github.com/flatsurf/surface-dynamics/raw/master/doc/source/static/logo.svg?sanitize=true" class="logo__image only-light" alt="surface-dynamics 0.7.0 documentation - Home"/>
+    <script>document.write(`<img src="https://github.com/flatsurf/surface-dynamics/raw/master/doc/source/static/logo.svg?sanitize=true" class="logo__image only-dark" alt="surface-dynamics 0.7.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://flatsurf.github.io" title="flatsurf" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://flatsurf.github.io/assets/logo.svg" class="icon-link-image" alt="flatsurf"/></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/flatsurf/surface-dynamics" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://sagemath.zulipchat.com/#narrow/channel/271193-flatsurf" title="Zulip" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-regular fa-comments fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Zulip</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing surface-dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer.html">Developer’s guide</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../strata.html">Strata of Abelian and quadratic differentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../surface_topology.html">Surface topology and geometry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../origamis.html">Origamis</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../interval_exchanges/index.html">Interval exchange transformations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Interval exchange transformations</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/constructors.html">Interval exchange constructors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/template.html">Permutation template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/labelled.html">Labelled permutations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/reduced.html">Reduced permutations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/rauzy_class_cardinality.html">Rauzy class cardinality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/cover.html">Covering construction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/iet.html">Interval exchange transformations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/integer_iet.html">Integral interval exchanges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/iet_family.html">Interval exchange families</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/flip_sequence.html">Flip sequences</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="interval_exchanges.html">Interval Exchange Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="square_tiled_surfaces.html">Square-tiled Surfaces</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Filtering Possible <span class="math notranslate nohighlight">\(\mathcal M\)</span>-Parallel Classes</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../database.html">Database of cylinder diagrams and quadratic permutations</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../topological_recursion/index.html">Topological recursion</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Topological recursion</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../topological_recursion/topological_recursion.html">Generic topological recursion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../topological_recursion/kontsevich.html">Kontsevich topological recursion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../topological_recursion/masur_veech.html">Masur-Veech topological recursion</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../databases/flat_surfaces.html">The databases.flat_surfaces Module</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../flat_surfaces.html">The flat_surfaces Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/abelian_strata.html"><code class="docutils literal notranslate"><span class="pre">abelian_strata</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/homology.html"><code class="docutils literal notranslate"><span class="pre">homology</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/masur_veech_volumes.html"><code class="docutils literal notranslate"><span class="pre">masur_veech_volumes</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/quadratic_strata.html"><code class="docutils literal notranslate"><span class="pre">quadratic_strata</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/separatrix_diagram.html"><code class="docutils literal notranslate"><span class="pre">separatrix_diagram</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/single_cylinder.html"><code class="docutils literal notranslate"><span class="pre">single_cylinder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/strata.html"><code class="docutils literal notranslate"><span class="pre">strata</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/twist_space.html"><code class="docutils literal notranslate"><span class="pre">twist_space</span></code></a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../misc/index.html">Miscellaneous</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Miscellaneous</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../misc/constellation.html">Constellations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../misc/group_representation.html">Finite group representation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../misc/plane_tree.html">Plane trees</a></li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../flat_surfaces/origamis.html">The origamis Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/origamis/generators.html"><code class="docutils literal notranslate"><span class="pre">generators</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/origamis/origami.html"><code class="docutils literal notranslate"><span class="pre">origami</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/origamis/origami_database.html"><code class="docutils literal notranslate"><span class="pre">origami_database</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/origamis/pillowcase_cover.html"><code class="docutils literal notranslate"><span class="pre">pillowcase_cover</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flat_surfaces/origamis/teichmueller_curve.html"><code class="docutils literal notranslate"><span class="pre">teichmueller_curve</span></code></a></li>
 </ul>
-</li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../interval_exchanges.html">The interval_exchanges Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/constructors.html"><code class="docutils literal notranslate"><span class="pre">constructors</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/conversion.html"><code class="docutils literal notranslate"><span class="pre">conversion</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/cover.html"><code class="docutils literal notranslate"><span class="pre">cover</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/flip_sequence.html"><code class="docutils literal notranslate"><span class="pre">flip_sequence</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/iet.html"><code class="docutils literal notranslate"><span class="pre">iet</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/labelled.html"><code class="docutils literal notranslate"><span class="pre">labelled</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/marked_partition.html"><code class="docutils literal notranslate"><span class="pre">marked_partition</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/rauzy_class_cardinality.html"><code class="docutils literal notranslate"><span class="pre">rauzy_class_cardinality</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/reduced.html"><code class="docutils literal notranslate"><span class="pre">reduced</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interval_exchanges/template.html"><code class="docutils literal notranslate"><span class="pre">template</span></code></a></li>
 </ul>
-<ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../misc.html">The misc Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../misc/additive_multivariate_generating_series.html"><code class="docutils literal notranslate"><span class="pre">additive_multivariate_generating_series</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/constellation.html"><code class="docutils literal notranslate"><span class="pre">constellation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/even_permutation.html"><code class="docutils literal notranslate"><span class="pre">even_permutation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/factored_denominator.html"><code class="docutils literal notranslate"><span class="pre">factored_denominator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/generalized_multiple_zeta_values.html"><code class="docutils literal notranslate"><span class="pre">generalized_multiple_zeta_values</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/group_representation.html"><code class="docutils literal notranslate"><span class="pre">group_representation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/iscc.html"><code class="docutils literal notranslate"><span class="pre">iscc</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/latex.html"><code class="docutils literal notranslate"><span class="pre">latex</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/linalg.html"><code class="docutils literal notranslate"><span class="pre">linalg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/multiplicative_multivariate_generating_series.html"><code class="docutils literal notranslate"><span class="pre">multiplicative_multivariate_generating_series</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/permutation.html"><code class="docutils literal notranslate"><span class="pre">permutation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/plane_tree.html"><code class="docutils literal notranslate"><span class="pre">plane_tree</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/ppl_utils.html"><code class="docutils literal notranslate"><span class="pre">ppl_utils</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/sql_db.html"><code class="docutils literal notranslate"><span class="pre">sql_db</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc/statistics.html"><code class="docutils literal notranslate"><span class="pre">statistics</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../topological_recursion.html">The topological_recursion Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../topological_recursion/kontsevich.html"><code class="docutils literal notranslate"><span class="pre">kontsevich</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topological_recursion/masur_veech.html"><code class="docutils literal notranslate"><span class="pre">masur_veech</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topological_recursion/no_pi.html"><code class="docutils literal notranslate"><span class="pre">no_pi</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topological_recursion/topological_recursion.html"><code class="docutils literal notranslate"><span class="pre">topological_recursion</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../topology.html">The topology Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../topology/fat_graph.html"><code class="docutils literal notranslate"><span class="pre">fat_graph</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../topology/fat_graph_exhaustive_generation.html"><code class="docutils literal notranslate"><span class="pre">fat_graph_exhaustive_generation</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
-</div>
-</div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
 
       </div>
       
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
-  </aside>
-  <div class="main">
-    <div class="content">
-      <div class="article-container">
-        <a href="#" class="back-to-top muted-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-          </svg>
-          <span>Back to top</span>
-        </a>
-        <div class="content-icon-container">
-          
-<div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
-              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
-              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
-              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
-            </button>
-          </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
-          </label>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/flatsurf/surface-dynamics/edit/master/doc/source/examples/rank2_genus3_classification.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button"
+   title="Suggest edit"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/examples/rank2_genus3_classification.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Filtering Possible \mathcal M-Parallel Classes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homologous-condition">Homologous Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pants-condition">Pants Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-twist-condition">Standard Twist Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leaf-condition">Leaf Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-3-1">H(3,1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-output">Printing Output</a></li>
+</ul>
+            </nav>
         </div>
-        <article role="main">
-          <section class="tex2jax_ignore mathjax_ignore" id="filtering-possible-mathcal-m-parallel-classes">
-<h1>Filtering Possible <span class="math notranslate nohighlight">\(\mathcal M\)</span>-Parallel Classes<a class="headerlink" href="#filtering-possible-mathcal-m-parallel-classes" title="Permalink to this heading">#</a></h1>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="filtering-possible-mathcal-m-parallel-classes">
+<h1>Filtering Possible <span class="math notranslate nohighlight">\(\mathcal M\)</span>-Parallel Classes<a class="headerlink" href="#filtering-possible-mathcal-m-parallel-classes" title="Link to this heading">#</a></h1>
 <p>The purpose of this notebook is to use Sage to assist in the classification of
 rank 2 invariant subvarieties in strata of translation surfaces in genus 3.
 This classification was already done through other methods by David Aulicino,
@@ -245,11 +475,11 @@ in my forthcoming PhD thesis, can be readily applied to other strata.</p>
 will start with a horizontally periodic translation surface <span class="math notranslate nohighlight">\(M\in \mathcal M\)</span>.
 A database for the possible cylinder diagrams for <span class="math notranslate nohighlight">\(M\)</span> can be found in
 <code class="docutils literal notranslate"><span class="pre">surface-dynamics</span></code>: see
-<a class="reference external" href="https://flatsurf.github.io/surface-dynamics/database.html">here</a>. Here is an
+<a class="reference internal" href="../databases/flat_surfaces.html"><span class="doc std std-doc">here</span></a>. Here is an
 example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">surface_dynamics</span> <span class="kn">import</span> <span class="n">CylinderDiagram</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">surface_dynamics</span><span class="w"> </span><span class="kn">import</span> <span class="n">CylinderDiagram</span>
 
 <span class="n">CylinderDiagram</span><span class="p">(</span><span class="s1">&#39;(0,2)-(6) (1,4)-(3,5) (3,6)-(2,4) (5)-(0,1)&#39;</span><span class="p">)</span>
 </pre></div>
@@ -272,9 +502,9 @@ can set <code class="docutils literal notranslate"><span class="pre">singletons=
 M\)</span>-parallel class by themselves.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sage.all</span> <span class="kn">import</span> <span class="n">Partitions</span><span class="p">,</span> <span class="n">SetPartitions</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sage.all</span><span class="w"> </span><span class="kn">import</span> <span class="n">Partitions</span><span class="p">,</span> <span class="n">SetPartitions</span>
 
-<span class="k">def</span> <span class="nf">list_partitions</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">singletons</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_partitions</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">singletons</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a list of all ways to partition the set [1..n] into m sets.</span>
 
 <span class="sd">    If singletons==False, do not allow singleton sets.</span>
@@ -292,7 +522,7 @@ M\)</span>-parallel class by themselves.</p>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">singletons</span><span class="p">:</span>
         <span class="n">int_parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">int_parts</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">([</span><span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">l</span><span class="p">])]</span>
 
-    <span class="c1"># Coverts integer partitions into set partitions</span>
+    <span class="c1"># Converts integer partitions into set partitions</span>
     <span class="k">for</span> <span class="n">each_part</span> <span class="ow">in</span> <span class="n">int_parts</span><span class="p">:</span>
         <span class="n">partitions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">SetPartitions</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">each_part</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">partitions</span>
@@ -327,15 +557,15 @@ M\)</span>-parallel class by themselves.</p>
 </div>
 </div>
 <section id="homologous-condition">
-<h2>Homologous Condition<a class="headerlink" href="#homologous-condition" title="Permalink to this heading">#</a></h2>
+<h2>Homologous Condition<a class="headerlink" href="#homologous-condition" title="Link to this heading">#</a></h2>
 <p>The first condition is simply that two homologous cylinders must be in the same
 <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel class. <code class="docutils literal notranslate"><span class="pre">filter_homologous_condition</span></code> removes partitions that
 do not satisfy this condition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">surface_dynamics.flat_surfaces.twist_space</span> <span class="kn">import</span> <span class="n">TwistSpace</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">surface_dynamics.flat_surfaces.twist_space</span><span class="w"> </span><span class="kn">import</span> <span class="n">TwistSpace</span>
 
-<span class="k">def</span> <span class="nf">check_homologous_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_homologous_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check that homologous cylinders are in the same M-parallel class</span>
 <span class="sd">    in `partition`.&quot;&quot;&quot;</span>
     <span class="n">tw</span> <span class="o">=</span> <span class="n">TwistSpace</span><span class="p">(</span><span class="n">cd</span><span class="p">)</span>
@@ -351,7 +581,7 @@ do not satisfy this condition.</p>
                 <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">filter_homologous_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">filter_homologous_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part_list</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;rFilter out the partitions in part_list when</span>
 <span class="sd">    check_homologous_condition=False.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">part</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">part_list</span> <span class="k">if</span> <span class="n">check_homologous_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part</span><span class="p">)]</span>
@@ -360,7 +590,7 @@ do not satisfy this condition.</p>
 </div>
 </div>
 <section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <p>For the cylinder diagram (0,3)-(0,5) (1,2)-(1,4) (4,6)-(3,7) (5,7)-(2,6),
 the last two cylinders (numbered 2 and 3) are homologous. Thus, the remaining partitions
 should be exactly those that put 2 and 3 in the same set.</p>
@@ -411,7 +641,7 @@ should be exactly those that put 2 and 3 in the same set.</p>
 </section>
 </section>
 <section id="pants-condition">
-<h2>Pants Condition<a class="headerlink" href="#pants-condition" title="Permalink to this heading">#</a></h2>
+<h2>Pants Condition<a class="headerlink" href="#pants-condition" title="Link to this heading">#</a></h2>
 <p>We define a <strong>generalized pants</strong> to be a pair of pants with potentially more
 than two pant legs. This gives an equation in homology between the core curves
 of the cylinders in the pants of the form <span class="math notranslate nohighlight">\(\gamma_1 = \sum_{i=2}^k \gamma_i\)</span>.
@@ -426,7 +656,7 @@ examples of this.  It would be nice to have a more general function that finds
 all homology relations, and determines all such conditions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_cylinder_in_partition</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">cylinder</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_cylinder_in_partition</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">cylinder</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the M-parallel class in `partition` than contains `cylinder`.</span>
 
 <span class="sd">    `partition` is a list of frozen sets.</span>
@@ -439,7 +669,7 @@ all homology relations, and determines all such conditions.</p>
     <span class="c1"># If cylinder was not found in partition</span>
     <span class="k">return</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">check_pants_condition</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">pants_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_pants_condition</span><span class="p">(</span><span class="n">partition</span><span class="p">,</span> <span class="n">pants_list</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check the partition satisfies any homology conditions coming from</span>
 <span class="sd">    the pants in pants_list.</span>
 
@@ -465,7 +695,7 @@ all homology relations, and determines all such conditions.</p>
             <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">find_generalized_pants</span><span class="p">(</span><span class="n">digraph</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_generalized_pants</span><span class="p">(</span><span class="n">digraph</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds cases when n cylinders are all only attached to the side</span>
 <span class="sd">    of a single cylinder. This is like a generalized version of a</span>
 <span class="sd">    topological pair of pants allows n pant legs.</span>
@@ -500,7 +730,7 @@ all homology relations, and determines all such conditions.</p>
             <span class="n">pants_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">pants</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pants_set</span>
 
-<span class="k">def</span> <span class="nf">filter_pants_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">filter_pants_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part_list</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter out the partitions in part_list when check_pants_condition=False.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cyl_graph</span> <span class="o">=</span> <span class="n">cd</span><span class="o">.</span><span class="n">cylinder_graph</span><span class="p">()</span>
@@ -512,7 +742,7 @@ all homology relations, and determines all such conditions.</p>
 </div>
 </div>
 <section id="id1">
-<h3>Example<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>For cylinder diagram (0,3)-(5) (1)-(2) (2,5)-(3,4) (4)-(0,1), the first three cylinders {0, 1, 2} form a pair of pants.
 Thus, they must all be in the same <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel class or all be in different ones.
 The only partition with two <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel classes is thus {{0, 1, 2}, {3}}.</p>
@@ -580,7 +810,7 @@ The only partition with two <span class="math notranslate nohighlight">\(\cal M\
 </section>
 </section>
 <section id="standard-twist-condition">
-<h2>Standard Twist Condition<a class="headerlink" href="#standard-twist-condition" title="Permalink to this heading">#</a></h2>
+<h2>Standard Twist Condition<a class="headerlink" href="#standard-twist-condition" title="Link to this heading">#</a></h2>
 <p>Now assume that <span class="math notranslate nohighlight">\(\cal M\)</span> is rank 2 and <span class="math notranslate nohighlight">\(M\)</span> has at least 3 <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel
 classes.  Let <span class="math notranslate nohighlight">\(\sigma_1,\sigma_2,\sigma_3\)</span> be the standard twists of these
 classes, and <span class="math notranslate nohighlight">\(p\)</span> be the projection from relative to absolution cohomology.  By
@@ -595,16 +825,16 @@ than 3 <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel cla
 <code class="docutils literal notranslate"><span class="pre">filter_standard_twist_condition</span></code> checks this condition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sage.all</span> <span class="kn">import</span> <span class="n">block_matrix</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">MixedIntegerLinearProgram</span>
-<span class="kn">from</span> <span class="nn">sage.numerical.mip</span> <span class="kn">import</span> <span class="n">MIPSolverException</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sage.all</span><span class="w"> </span><span class="kn">import</span> <span class="n">block_matrix</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">MixedIntegerLinearProgram</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sage.numerical.mip</span><span class="w"> </span><span class="kn">import</span> <span class="n">MIPSolverException</span>
 
-<span class="k">def</span> <span class="nf">class_matrix</span><span class="p">(</span><span class="n">tw</span><span class="p">,</span> <span class="n">m_class</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">class_matrix</span><span class="p">(</span><span class="n">tw</span><span class="p">,</span> <span class="n">m_class</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Stacks the core curves of the cylinders in an M-parallel class into a</span>
 <span class="sd">    single matrix.&quot;&quot;&quot;</span>
     <span class="n">core_curves</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tw</span><span class="o">.</span><span class="n">cylinder_core_curves</span><span class="p">())</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">matrix</span><span class="p">([</span><span class="n">core_curves</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">m_class</span><span class="p">]))</span>
 
-<span class="k">def</span> <span class="nf">ordered_partition</span><span class="p">(</span><span class="n">tw</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ordered_partition</span><span class="p">(</span><span class="n">tw</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks the standard twist condition on a specific ordered set of the</span>
 <span class="sd">    equivalence classes.&quot;&quot;&quot;</span>
     <span class="n">c0</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">partition</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -631,7 +861,7 @@ than 3 <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel cla
         <span class="c1"># MIPSolverException means that no solution exists.</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">check_standard_twist_condition</span><span class="p">(</span><span class="n">tw</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_standard_twist_condition</span><span class="p">(</span><span class="n">tw</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;If the partition does not have three equivalence classes, return</span>
 <span class="sd">    true. Otherwise, check that the equation</span>
 <span class="sd">    Σa_iα_i = Σb_jβ_j + Σc_kγ_k</span>
@@ -651,7 +881,7 @@ than 3 <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel cla
                     <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">filter_standard_twist_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">filter_standard_twist_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part_list</span><span class="p">):</span>
     <span class="n">tw</span> <span class="o">=</span> <span class="n">TwistSpace</span><span class="p">(</span><span class="n">cd</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">part</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">part_list</span>
                  <span class="k">if</span> <span class="n">check_standard_twist_condition</span><span class="p">(</span><span class="n">tw</span><span class="p">,</span> <span class="n">part</span><span class="p">)]</span>
@@ -660,7 +890,7 @@ than 3 <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel cla
 </div>
 </div>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Since these exists an invariant subvariety of rank 2 containing a
 translation surface <span class="math notranslate nohighlight">\(M\)</span> with cylinder diagram (0,3)-(5) (1)-(0) (2,5)-(3,4)
@@ -750,7 +980,7 @@ homology that contains the core curve of every cylinder of <span class="math not
 </section>
 </section>
 <section id="leaf-condition">
-<h2>Leaf Condition<a class="headerlink" href="#leaf-condition" title="Permalink to this heading">#</a></h2>
+<h2>Leaf Condition<a class="headerlink" href="#leaf-condition" title="Link to this heading">#</a></h2>
 <p>The final condition is quite specific but we include it because it is easy to
 code up. It is from <a class="reference external" href="https://arxiv.org/abs/1501.03303">this paper</a> Lemma 2.11.
 Let <span class="math notranslate nohighlight">\(\cal M\)</span> be an invariant subvariety with field of definition <span class="math notranslate nohighlight">\(\mathbb Q\)</span>
@@ -766,14 +996,14 @@ condition since <span class="math notranslate nohighlight">\(C\)</span> is a lea
 <span class="math notranslate nohighlight">\(D\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_simple</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_simple</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if cylinder number `index` is simple.&quot;&quot;&quot;</span>
     <span class="n">cylinder</span> <span class="o">=</span> <span class="n">cd</span><span class="o">.</span><span class="n">cylinders</span><span class="p">()[</span><span class="n">index</span><span class="p">]</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cylinder</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">cylinder</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">find_leaves</span><span class="p">(</span><span class="n">digraph</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_leaves</span><span class="p">(</span><span class="n">digraph</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the tuples (leaf, neighbor) for all leaves of `digraph`.</span>
 
 <span class="sd">    A leaf is a vertex such that it only has one neighbor, where we</span>
@@ -789,7 +1019,7 @@ condition since <span class="math notranslate nohighlight">\(C\)</span> is a lea
             <span class="n">leaf_neighbers</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">neighbors</span><span class="p">))))</span>
     <span class="k">return</span> <span class="n">leaf_neighbers</span>
 
-<span class="k">def</span> <span class="nf">check_leaf_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_leaf_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">partition</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check for the following condition:</span>
 <span class="sd">    If a cylinder C is only bordering another cylinder D, then C and D cannot</span>
 <span class="sd">    be in the same M-parallel class.</span>
@@ -804,7 +1034,7 @@ condition since <span class="math notranslate nohighlight">\(C\)</span> is a lea
                 <span class="k">return</span> <span class="kc">False</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">filter_leaf_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">filter_leaf_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part_list</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Filter out the partitions in part_list when check_leaf_condition=False.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">part</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">part_list</span> <span class="k">if</span> <span class="n">check_leaf_condition</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">part</span><span class="p">)]</span>
@@ -813,7 +1043,7 @@ condition since <span class="math notranslate nohighlight">\(C\)</span> is a lea
 </div>
 </div>
 <section id="id2">
-<h3>Example<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>Example<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>In the cylinder diagram (0,1)-(0,2) (2)-(3) (3,4)-(1,5) (5)-(4), we see that
 cylinder 3 is a leaf adjacent only to cylinder 2. Thus, they cannot be in the
 same set.</p>
@@ -849,17 +1079,17 @@ same set.</p>
 </section>
 </section>
 <section id="h-3-1">
-<h2>H(3,1)<a class="headerlink" href="#h-3-1" title="Permalink to this heading">#</a></h2>
+<h2>H(3,1)<a class="headerlink" href="#h-3-1" title="Link to this heading">#</a></h2>
 <p>We go through every cylinder diagram with <span class="math notranslate nohighlight">\(n\)</span> cylinders in a component of a
 stratum, and we check the partitions with <span class="math notranslate nohighlight">\(m\)</span> <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel classes. <span class="math notranslate nohighlight">\(\cal
 H(3,1)\)</span> has no rank 2 invariant subvarieties, so we would like to filter out as
 many partitions as possible.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">surface_dynamics</span> <span class="kn">import</span> <span class="n">AbelianStratum</span>
-<span class="kn">from</span> <span class="nn">surface_dynamics.databases.flat_surfaces</span> <span class="kn">import</span> <span class="n">CylinderDiagrams</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">surface_dynamics</span><span class="w"> </span><span class="kn">import</span> <span class="n">Stratum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">surface_dynamics.databases.flat_surfaces</span><span class="w"> </span><span class="kn">import</span> <span class="n">CylinderDiagrams</span>
 
-<span class="k">def</span> <span class="nf">filter_partitions</span><span class="p">(</span><span class="n">cyl_diag_list</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">filter_partitions</span><span class="p">(</span><span class="n">cyl_diag_list</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;For each cylinder diagram in cyl_diag_list, list all partitions with</span>
 <span class="sd">    num_classes number of classes and filter out the invalid ones.</span>
 
@@ -883,7 +1113,7 @@ two of the four cylinder diagrams. For the remaining ones, we only need to
 consider one partition each.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">AbelianStratum</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">Stratum</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">C</span> <span class="o">=</span> <span class="n">CylinderDiagrams</span><span class="p">()</span>
 
 <span class="c1"># Check the partitions with 2 classes</span>
@@ -953,7 +1183,7 @@ consider one partition each.</p>
 </div>
 </section>
 <section id="printing-output">
-<h2>Printing Output<a class="headerlink" href="#printing-output" title="Permalink to this heading">#</a></h2>
+<h2>Printing Output<a class="headerlink" href="#printing-output" title="Link to this heading">#</a></h2>
 <p>The following script goes through every component of strata in <code class="docutils literal notranslate"><span class="pre">strata</span></code>, every
 cylinder diagram with at least 4 cylinders, and checks all partitions for at
 least 2 <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel classes. The output is saves to a folder called
@@ -961,7 +1191,7 @@ least 2 <span class="math notranslate nohighlight">\(\cal M\)</span>-parallel cl
 subvarieties in some genus 3 strata.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">list_cylinder_classes</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">num_cylinders</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">list_cylinder_classes</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">num_cylinders</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Runs filter_partitions on every cylinder diagram with num_cylinders</span>
 <span class="sd">    number of cylinders in a stratum H.&quot;&quot;&quot;</span>
     <span class="n">C</span> <span class="o">=</span> <span class="n">CylinderDiagrams</span><span class="p">()</span>
@@ -981,10 +1211,10 @@ subvarieties in some genus 3 strata.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># H = AbelianStratum(3, 1).components()[0]</span>
-<span class="c1"># H = AbelianStratum(2, 2).components()[1]         ## This is H^odd(2,2)</span>
-<span class="n">H</span> <span class="o">=</span> <span class="n">AbelianStratum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="c1"># H = AbelianStratum(1, 1, 1, 1).components()[0]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># H = Stratum([3, 1], k=1).components()[0]</span>
+<span class="c1"># H = Stratum([2, 2], k=1).components()[1]         ## This is H^odd(2,2)</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">Stratum</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">components</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># H = Stratum([1, 1, 1, 1], k=1).components()[0]</span>
 
 <span class="c1"># Cylinder diagrams with 4 or more cylinders.</span>
 <span class="k">for</span> <span class="n">num_cylinders</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
@@ -998,9 +1228,8 @@ subvarieties in some genus 3 strata.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4 CYLINDERS
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 classes
+
+2 classes
 1. (0)-(1) (1,3,4,2)-(5,6) (5)-(0,4) (6)-(2,3)
 [{{0}, {1, 2, 3}}]
 2. (0)-(1,2) (1,4,2,3)-(5,6) (5)-(4) (6)-(0,3)
@@ -1133,9 +1362,8 @@ subvarieties in some genus 3 strata.</p>
 []
 8. (0,6)-(4,5) (1,2)-(3,6) (3)-(0) (4)-(2) (5)-(1)
 [{{0, 1, 3, 4}, {2}}]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 classes
+
+3 classes
 1. (0)-(2) (1)-(3) (2,4,3)-(5,6) (5)-(4) (6)-(0,1)
 [{{0, 1, 4}, {2}, {3}}]
 2. (0,4)-(6) (1)-(0) (2)-(3) (3,6)-(4,5) (5)-(1,2)
@@ -1181,99 +1409,121 @@ subvarieties in some genus 3 strata.</p>
 </section>
 </section>
 
-        </article>
-      </div>
-      <footer>
-        
-        <div class="related-pages">
-          <a class="next-page" href="../strata.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Strata of Abelian and quadratic differentials</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="square_tiled_surfaces.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Square-tiled surfaces</div>
-                
-              </div>
-            </a>
-        </div>
-        <div class="bottom-of-page">
-          <div class="left-details">
-            <div class="copyright">
-                Copyright &#169; 2021-2023, the surface-dynamics authors
-            </div>
-            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-            
-            <a href="https://github.com/pradyunsg/furo">Furo</a>
-            
-          </div>
-          <div class="right-details">
-            
-          </div>
-        </div>
-        
-      </footer>
-    </div>
-    <aside class="toc-drawer">
-      
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Filtering Possible <span class="math notranslate nohighlight">\(\mathcal M\)</span>-Parallel Classes</a><ul>
-<li><a class="reference internal" href="#homologous-condition">Homologous Condition</a><ul>
-<li><a class="reference internal" href="#example">Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#pants-condition">Pants Condition</a><ul>
-<li><a class="reference internal" href="#id1">Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#standard-twist-condition">Standard Twist Condition</a><ul>
-<li><a class="reference internal" href="#examples">Examples</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#leaf-condition">Leaf Condition</a><ul>
-<li><a class="reference internal" href="#id2">Example</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#h-3-1">H(3,1)</a></li>
-<li><a class="reference internal" href="#printing-output">Printing Output</a></li>
-</ul>
-</li>
-</ul>
 
-          </div>
-        </div>
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="square_tiled_surfaces.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Square-tiled Surfaces</p>
       </div>
-      
-      
-    </aside>
+    </a>
+    <a class="right-next"
+       href="../databases/flat_surfaces.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The databases.flat_surfaces Module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="../_static/scripts/furo.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    </body>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homologous-condition">Homologous Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pants-condition">Pants Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-twist-condition">Standard Twist Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leaf-condition">Leaf Condition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h-3-1">H(3,1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-output">Printing Output</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the surface-dynamics authors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2021-2025, the surface-dynamics authors.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>
