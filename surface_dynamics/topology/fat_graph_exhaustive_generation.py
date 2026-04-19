@@ -822,7 +822,7 @@ class FatGraphs:
         # variable order: v, e, f, g
         from sage.geometry.polyhedron.constructor import Polyhedron
         eqns = [(-2, 1, -1, 1, 2)]  # -2 + v - e + f + 2g = 0
-        ieqs = [(-self._vmin,  1, 0, 0, 0),  # -vim + v >= 0
+        ieqs = [(-self._vmin,  1, 0, 0, 0),  # -vmin + v >= 0
                 (-self._emin,  0, 1, 0, 0),  # -emin + e >= 0
                 (-self._fmin,  0, 0, 1, 0),  # -fmin + f >= 0
                 (-self._gmin,  0, 0, 0, 1),  # -gmin + g >= 0
