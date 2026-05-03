@@ -594,7 +594,7 @@ interval exchange transformation</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/67c294aa3b755e430bb0ac445ba338011105c37e74807433aa9bac08e8c879ba.png" src="../_images/67c294aa3b755e430bb0ac445ba338011105c37e74807433aa9bac08e8c879ba.png" />
+<img alt="../_images/544816d97a803b300b4f42be059343d10c9f018e4c91c0585262beefbb366255.png" src="../_images/544816d97a803b300b4f42be059343d10c9f018e4c91c0585262beefbb366255.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -767,11 +767,6 @@ and <code class="docutils literal notranslate"><span class="pre">pyintervalxt</s
   import pkg_resources as pr
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4694/1501804959.py:2: DeprecationWarning: the function is_NumberField is deprecated; use isinstance(x, sage.rings.number_field.number_field_base.NumberField) instead
-See https://github.com/sagemath/sage/issues/35283 for details.
-  u2 = iet_to_pyintervalxt(t2)
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[a: 1] [b: (sqrt2 ~ 1.4142136)] [c: 2] [d: (2*sqrt2 ~ 2.8284271)] / [d] [c] [b] [a]
 Interval exchange transformation of [0, 3*sqrt2 + 3[ with permutation
 a b c d
@@ -806,7 +801,7 @@ situations. For example on connected component of Abelian strata</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0024863867636478, 0.4155738227473066, 0.1845438861506658]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0061302497829268, 0.4264974006658808, 0.1890561393157851]
 </pre></div>
 </div>
 </div>
@@ -821,7 +816,7 @@ situations. For example on connected component of Abelian strata</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0009455297311365, 0.31250803002037075, 0.12198381579811543]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0010731493600318, 0.31261583841069973, 0.12161918101572589]
 </pre></div>
 </div>
 </div>
@@ -834,7 +829,7 @@ subbundle</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">iet</span><span class="o">.</span><span class="n">GeneralizedPermutation</span><span class="p">(</span><span class="s2">&quot;a a&quot;</span><span class="p">,</span> <span class="s2">&quot;b b c c d d e e&quot;</span><span class="p">)</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">cover</span><span class="p">([</span><span class="s2">&quot;(1,2,3,4)&quot;</span><span class="p">,</span> <span class="s2">&quot;(1,4,3,2)&quot;</span><span class="p">,</span> <span class="s2">&quot;(1,2,3,4)&quot;</span><span class="p">,</span> <span class="s2">&quot;()&quot;</span><span class="p">,</span> <span class="s2">&quot;()&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">stratum</span><span class="p">())</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">lexp</span><span class="p">,</span> <span class="n">char</span><span class="p">)</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">lyapunov_exponents_H_plus</span><span class="p">(</span><span class="n">isotypic_decomposition</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_char</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">lexp</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">lyapunov_exponents_H_plus</span><span class="p">(</span><span class="n">isotypic_decomposition</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_char</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:15}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">char</span><span class="p">),</span> <span class="n">lexp</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -842,8 +837,8 @@ subbundle</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Q_3(10, 2^3, -1^8)
 (1, 1, 1, 1)   : []
-(1, -1, 1, -1) : [0.3332815503742517]
-(2, 0, -2, 0)  : [0.1676715052958347, 0.16736099525593445]
+(1, -1, 1, -1) : [0.3388042069876742]
+(2, 0, -2, 0)  : [0.1712788719097012, 0.17117488864279878]
 </pre></div>
 </div>
 </div>
